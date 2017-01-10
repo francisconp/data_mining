@@ -1,4 +1,4 @@
-# Variables needs to start this app
+All variables needed to start this application
 
 CONSUMER_KEY
 CONSUMER_SERCRET
