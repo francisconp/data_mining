@@ -5,8 +5,17 @@ from kafka import KafkaProducer, KafkaConsumer
 import tweepy
 import json
 import os
- 
-producer = KafkaProducer(bootstrap_servers='localhost:9092')
+
+try:
+	kafka_server=os.environ['KAFKA']
+except:
+	print """ 
+		You need to set KAFKA environment, like this:
+		export KAFKA='server.local:9092'
+	"""	
+	return False
+
+producer = KafkaProducer(bootstrap_servers=kafka_server)
 
 class TagStream(StreamListener):
      def on_data(self, data):
@@ -37,8 +46,9 @@ class TwitterStream():
                 ACCESS_TOKEN
                 ACCESS_SECRET
                 HASHTAG
+		KAFKA
             """
-            return 0
+            return False
 
         self.auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         self.auth.set_access_token(self.access_token, self.access_secret)
