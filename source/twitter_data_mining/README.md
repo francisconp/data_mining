@@ -1,0 +1,7 @@
+# Variables needs to start this app
+
+CONSUMER_KEY
+CONSUMER_SERCRET
+ACCESS_TOKEN
+ACCESS_SECRET
+HASHTAG
